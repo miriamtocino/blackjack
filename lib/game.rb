@@ -14,7 +14,9 @@ class Game
     @is_finished = false
 
     give_initial_cards_to(@hand)
+    @hand.print_holding_cards
     give_initial_cards_to(@dealer)
+    @dealer.print_holding_cards
   end
 
   def update
@@ -27,14 +29,14 @@ private
 
   def print_banner
     puts "
-     ____  _            _    _            _
-    |  _ \/| |          | |  (_)          | |
-    | |_) | | __ _  ___| | ___  __ _  ___| | __
-    |  _ <| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
-    | |_) | | (_| | (__|   <| | (_| | (__|   <
-    |____/|_|\/__,_|\/___|_|\/_\/ |\/__,_|\/___|_|\/_\/
-                           _/ |
-                          |__/
+ ____  _            _    _            _
+|  _ \/| |          | |  (_)          | |
+| |_) | | __ _  ___| | ___  __ _  ___| | __
+|  _ <| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+| |_) | | (_| | (__|   <| | (_| | (__|   <
+|____/|_|\/__,_|\/___|_|\/_\/ |\/__,_|\/___|_|\/_\/
+                       _/ |
+                      |__/
     "
   end
 
@@ -43,10 +45,18 @@ private
     2.times { give_card_to(player) }
   end
 
+  def print_both_holding_cards
+    puts "Your cards:"
+    @hand.print_holding_cards
+    puts "Dealer's cards:"
+    @dealer.print_holding_cards
+  end
+
   def give_turn_to(player)
     puts "*" * 40 + "\n#{player.class.name.upcase} TURN" unless @is_finished
     while !@is_finished && player.decide
       give_card_to(player)
+      print_both_holding_cards
 
       if player.score > MAX_SCORE
         if player == @hand
@@ -62,9 +72,6 @@ private
   def give_card_to(player)
     card = @deck.draw
     player.receive_card(card)
-    if player == @hand
-      card.print_card
-    end
   end
 
   def resolution
