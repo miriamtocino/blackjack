@@ -1,12 +1,15 @@
 require_relative 'player'
 
 class Dealer < Player
+
+  MAX_DECIDE_SCORE = 17
+
   def initialize
     super()
   end
 
   def decide
-    @score < 17
+    @score < MAX_DECIDE_SCORE
   end
 
   def receive_card(card)
