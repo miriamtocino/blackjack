@@ -47,3 +47,6 @@ The following extra rules are optional challenges:
   - The player gets exactly one card after this choice, then her turn ends.
   - If the player wins after doubling down, she earns 6 points in stead of 3
   - If the player loses after doubling down, she loses 3 points in stead of gaining 0 (this can result in a negative score)
+
+## Resources
+- [ASCII Generator](http://www.desmoulins.fr/index_us.php?pg=scripts!online!asciiart)
