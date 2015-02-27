@@ -7,7 +7,7 @@ class Game
   MAX_SCORE = 21
 
   def initialize
-    puts "WELCOME TO BLACKJACK!"
+    print_banner
     @deck = Deck.new
     @hand = Hand.new
     @dealer = Dealer.new
@@ -24,6 +24,19 @@ class Game
   end
 
 private
+
+  def print_banner
+    puts "
+     ____  _            _    _            _
+    |  _ \/| |          | |  (_)          | |
+    | |_) | | __ _  ___| | ___  __ _  ___| | __
+    |  _ <| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+    | |_) | | (_| | (__|   <| | (_| | (__|   <
+    |____/|_|\/__,_|\/___|_|\/_\/ |\/__,_|\/___|_|\/_\/
+                           _/ |
+                          |__/
+    "
+  end
 
   def give_initial_cards_to(player)
     puts "*" * 40
@@ -49,6 +62,9 @@ private
   def give_card_to(player)
     card = @deck.draw
     player.receive_card(card)
+    if player == @hand
+      card.print_card
+    end
   end
 
   def resolution

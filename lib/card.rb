@@ -31,4 +31,16 @@ class Card
   def name
     @face.to_s + " of " + @suit.to_s
   end
+
+  def print_card
+    puts " " + "-" * 4
+    puts "|" + " " * 4 + "|"
+    if @card_value < 10
+      puts "|" + "  #{@card_value.to_s} " + "|"
+    else
+      puts "|" + " #{@card_value.to_s} " + "|"
+    end
+    puts "|" + " " * 4 + "|"
+    puts " " + "-" * 4
+  end
 end
