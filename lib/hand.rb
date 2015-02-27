@@ -2,8 +2,8 @@ require_relative 'player'
 require_relative 'deck'
 
 class Hand < Player
-  def initialize
 
+  def initialize
     super()
   end
 
@@ -19,11 +19,5 @@ class Hand < Player
       end
     end
   end
-
-  def receive_card(card)
-    @score += card.card_value
-    @holding_cards << card
-    puts "This is the card you got: " + card.name
-    puts "And your current score is: " + @score.to_s
-  end
+  
 end

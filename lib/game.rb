@@ -53,6 +53,9 @@ private
   end
 
   def give_turn_to(player)
+    if player == @dealer
+      player.hide_first_card = false
+    end
     puts "*" * 40 + "\n#{player.class.name.upcase} TURN" unless @is_finished
     while !@is_finished && player.decide
       give_card_to(player)
